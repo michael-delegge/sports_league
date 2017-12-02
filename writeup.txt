@@ -1,0 +1,64 @@
+Name: Michael DeLegge
+Date: 2 DEC 17
+Current Module: SQL Development in Python
+Project Name: Sports League
+
+Project Goals:
+	Create tables in a MySQL  database to hold information about an imaginary sports league. The league will consist of teams, players, and games in some sports competition. 
+
+Considerations:
+	-There are a lot of files to create, need to make sure they source properly
+    -Lots of files means lots of room for error
+    -Making sure data is entered correctly into tables
+    -Consistent architecture
+    -Good/readable aliases
+    -How many teams/players/games to use to get good data
+    -Players with no team, height, weight, etc.
+
+Initial Design:
+	Not too much thought had to be put into the design of this project because it is outlined exactly what we are supposed to do and what fields to add to the tables. Steps one through six are all of the required tables and the data entered into them, while the remaining steps are all data manipulation. 
+    One thing to note: I did not include any foreign keys in any of my tables. I simply could not get them to work without getting the following error:
+
+    cannot delete or update a parent row: a foreign key restraint fails
+
+I tried for a while to get my foreign keys to work, but I was obviously doing something wrong. I do acknowledge that my tables should have foreign keys and I know where they are supposed to go, but something kept going wrong. For what it's worth, these are my foreign keys had I gotten them to work:
+
+step 2
+FOREIGN KEY (team_id) REFERENCES teams(team_id)
+
+step 3
+FOREIGN KEY (player_id) REFERENCES players(player_id)
+
+step 4
+FOREIGN KEY (home_id) REFERENCES teams(team_id)
+FOREIGN KEY (visitor_id) REFERENCES teams(team_id)
+
+step 5
+FOREIGN KEY (game_id) REFERENCES games_played(game_id)
+FOREIGN KEY (team_id) REFERENCES teams(team_id)
+
+
+Data Flow:
+	This project has a very straight forward data flow because we are explicitly told what needs to be accomplished at each step. Steps one through six are the most important because they build the tables the remaining steps pull from. 
+    Step1 creates the teams table, step2 creates the players table, step3 creates the table that holds all of the player's stats, step4 creates the table that tracks the games played, step5 creates the score table, and step6 fills all of the tables with the corresponding and minimum amount of data. 
+    The remaining steps, step7 to step23, all have a specific task that is clearly presented. After steps one through six have been performed, it does not matter what order the remaining steps are sourced in because they are not reliant on anything but the tables created in the early steps. 
+
+Communication Protocol:
+	There were no communication protocols for this assignment.   
+
+Potential Pitfalls:
+	-Incorrect data entry into tables
+    -Not dropping tables/views 
+    -Handling duplicate data
+    -MySQL is bad about telling you what is wrong with your syntax
+    -Table relationship
+    -What exactly is being asked for each step
+
+Test Plan:
+	User Test:
+ 		All of the data to fill the tables is sources from step06, so changing that information, such as: duplicate names, team names, IDs, etc. accounted for a lot of test cases. The most important user cases were populating the tables, and sourcing each step to ensure each step worked before moving on. 
+	Test Cases:
+		Not much different than user cases. I manipulated data in the tables to ensure there were no issues with completing all of the required steps. Testing was straight forward; source the step and see if it works. 
+
+Conclusion:
+	Overall I think this project went OK. Sports league, above most other projects we have had, made great use of the examples and exercises we went over in class. There were multiple ways to solve some of the steps which opened up a lot of possibilities. Through the course of the project, I used a variety of methods to solve certain steps. As far as improving this project, I know there is room for improvement in some of my steps. I used views for a few steps because it was a solution that worked for one step initially and I rolled with it. I'm sure there are more efficient ways to solve those steps other than with views, but views worked at the time, but I'm glad I used them just to get experience with views and see how they operate. 
