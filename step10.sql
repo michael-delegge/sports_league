@@ -1,23 +1,11 @@
 /*
 
-step 12
+step 10
 
-Highest number of points scored by both teams
-in a single game.
-
-Includes a view of the game id and the sum
-of points scored from the score table.
+Display the highest score for any team in
+a single game.
 */
 
-DROP VIEW IF EXISTS total;
-
-CREATE VIEW total AS
-    SELECT game_id as gi, SUM(points_scored) AS tp
-    FROM score
-    GROUP BY game_id;
-
-
-SELECT gi AS 'game number', tp AS 'highest combined score' 
-    FROM total
-    WHERE tp = (SELECT MAX(tp) FROM highest)
-    ORDER BY tp DESC LIMIT 1;
+SELECT team_id, MAX(points_scored) AS 'teams highest score'
+    FROM score 
+    GROUP BY team_id;
